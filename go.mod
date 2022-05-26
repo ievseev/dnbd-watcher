@@ -1,4 +1,4 @@
-module dnbd-finder
+module dnbd-watcher
 
 go 1.17
 
