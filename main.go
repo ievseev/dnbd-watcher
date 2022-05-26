@@ -9,7 +9,6 @@ import (
 
 func main() {
 	phrasesDictionary:=[]string{"раз","два","три",")"}
-	randomIndex := rand.Intn(len(phrasesDictionary))
 
 	token := os.Getenv("DNBD_TOKEN")
 	bot, _ := tgbotapi.NewBotAPI(token)
@@ -29,6 +28,7 @@ func main() {
         // Now that we know we've gotten a new message, we can construct a
         // reply! We'll take the Chat ID and Text from the incoming message
         // and use it to create a new message.
+        randomIndex := rand.Intn(len(phrasesDictionary))
         msg := tgbotapi.NewMessage(update.Message.Chat.ID, phrasesDictionary[randomIndex])
         // We'll also say that this message is a reply to the previous message.
         // For any other specifications than Chat ID or Text, you'll need to
