@@ -7,22 +7,22 @@ import (
 )
 
 func main() {
-    token := os.Getenv("DNBD_TOKEN")
+	token := os.Getenv("DNBD_TOKEN")
 	bot, _ := tgbotapi.NewBotAPI(token)
 
 	updateConfig := tgbotapi.NewUpdate(0)
-    updateConfig.Timeout = 30
-    updates := bot.GetUpdatesChan(updateConfig)
+	updateConfig.Timeout = 30
+	updates := bot.GetUpdatesChan(updateConfig)
 
 	for update := range updates {
-        if update.Message == nil {
-            continue
-        }
+		if update.Message == nil {
+			continue
+		}
 
-        msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Hochew eshe poboltat, "+ update.Message.Chat.FirstName + "?")
+		msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Hochew eshe poboltat, "+update.Message.Chat.FirstName+"?")
 
-        if _, err := bot.Send(msg); err != nil {
-            panic(err)
-        }
+		if _, err := bot.Send(msg); err != nil {
+			panic(err)
+		}
 	}
 }
